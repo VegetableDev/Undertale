@@ -22,6 +22,8 @@ namespace Undertale.Scripts.Backend
             this.contentMan = contentManager;
         }
 
+        private SpriteFont font;
+
         public virtual void Load()
         {
             gameObjects = new List<GameObject>();
@@ -29,6 +31,8 @@ namespace Undertale.Scripts.Backend
             player = SceneManager.instance.playerObjects.player;
             player.SetCurrentScene(this);
             camera = SceneManager.instance.playerObjects.camera;
+
+            font = contentMan.Load<SpriteFont>("Fonts/Determination");
         }
 
         public virtual void Update(GameTime gameTime)
@@ -43,6 +47,11 @@ namespace Undertale.Scripts.Backend
         public virtual void Draw(SpriteBatch _spriteBatch)
         {
             DrawAllObjects(_spriteBatch);
+        }
+
+        public void DrawUI(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(font, "I like men", Vector2.Zero, Color.White);
         }
 
         public void DrawAllObjects(SpriteBatch _spriteBatch)

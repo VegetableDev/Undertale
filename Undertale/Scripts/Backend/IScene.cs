@@ -9,5 +9,7 @@ namespace Undertale.Scripts.Backend
         public void Load();
         public void Update(GameTime gameTime);
         public void Draw(SpriteBatch spriteBatch);
+
+        public void DrawUI(SpriteBatch spriteBatch);
     }
 }

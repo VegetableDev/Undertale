@@ -23,6 +23,7 @@ namespace Undertale
         
 
         private RenderTarget2D _nativeRenderTarget;
+        private RenderTarget2D _nativeUIRenderTarget;
 
         private int internalResolutionW = 320;
         private int internalResolutionH = 240;
@@ -52,6 +53,9 @@ namespace Undertale
             _graphics.PreferredBackBufferWidth = windowW;
             _graphics.PreferredBackBufferHeight = windowH;
             _nativeRenderTarget = new RenderTarget2D(_graphics.GraphicsDevice, internalResolutionW, internalResolutionH);
+
+            _nativeUIRenderTarget = new RenderTarget2D(_graphics.GraphicsDevice, internalResolutionW, internalResolutionH);
+
             _graphics.ApplyChanges();
 
 
@@ -100,10 +104,20 @@ namespace Undertale
 
             _spriteBatch.End();
 
+            GraphicsDevice.SetRenderTarget(_nativeUIRenderTarget);
+
+            _spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Transparent);
+
+            sceneManager.GetCurrentScene().DrawUI(_spriteBatch);
+
+            _spriteBatch.End();
+
             GraphicsDevice.SetRenderTarget(null);
 
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             _spriteBatch.Draw(_nativeRenderTarget, new Rectangle(0, 0, windowW, windowH), Color.White);
+            _spriteBatch.Draw(_nativeUIRenderTarget, new Rectangle(0, 0, windowW, windowH), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

@@ -40,5 +40,10 @@ namespace Undertale.Scripts
 
             _spriteBatch.Draw(player.spr.texture, rect, Color.White);
         }
+
+        public void DrawUI(SpriteBatch _spriteBatch)
+        {
+
+        }
     }
 }

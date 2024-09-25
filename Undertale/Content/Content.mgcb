@@ -13,6 +13,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Fonts/Determination.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Determination.spritefont
+
 #begin Sprites/Player/spr_f_maincharad_0.png
 /importer:TextureImporter
 /processor:TextureProcessor
